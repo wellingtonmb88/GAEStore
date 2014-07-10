@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:p="http://www.springframework.org/schema/p"
+	xmlns:context="http://www.springframework.org/schema/context"
+    xmlns:mvc="http://www.springframework.org/schema/mvc"
+	xsi:schemaLocation="
+    http://www.springframework.org/schema/beans 
+    http://www.springframework.org/schema/beans/spring-beans-4.0.xsd
+	http://www.springframework.org/schema/context 
+    http://www.springframework.org/schema/context/spring-context-4.0.xsd
+    http://www.springframework.org/schema/mvc
+    http://www.springframework.org/schema/mvc/spring-mvc-4.0.xsd ">
+
+    
+    <mvc:annotation-driven />
+	<context:component-scan base-package="com.cloudstore88" />
+	 
+<!-- 	Configuração do Spring  (Convencional)-->
+	
+<!-- 	<bean id="viewResolver" -->
+<!--         class="org.springframework.web.servlet.view.UrlBasedViewResolver"> -->
+<!--         <property name="viewClass" -->
+<!--             value="org.springframework.web.servlet.view.JstlView" /> -->
+<!--         <property name="prefix" value="/WEB-INF/jsp/" /> -->
+<!--         <property name="suffix" value=".jsp" /> -->
+<!--     </bean> -->
+
+
+<!-- Configuração do Spring  (Tiles) -->
+<bean id="tilesConfigurer"
+          class="org.springframework.web.servlet.view.tiles2.TilesConfigurer"
+          p:definitions="/WEB-INF/tiles-defs.xml" />
+
+    <bean id="tilesViewResolver"
+          class="org.springframework.web.servlet.view.UrlBasedViewResolver"
+          p:viewClass="org.springframework.web.servlet.view.tiles2.TilesView" />
+    
+    
+   <!-- Configuração de Localidade -->
+  <bean id="localeResolver" class="org.springframework.web.servlet.i18n.SessionLocaleResolver">
+     <property name="defaultLocale" value="pt_BR" />
+ </bean>
+	
+</beans>

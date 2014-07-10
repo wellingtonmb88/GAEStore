@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="utf-8"?>
+<web-app xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns="http://java.sun.com/xml/ns/javaee" 
+	xmlns:web="http://java.sun.com/xml/ns/javaee/web-app_2_5.xsd"
+	xsi:schemaLocation="http://java.sun.com/xml/ns/javaee
+http://java.sun.com/xml/ns/javaee/web-app_2_5.xsd"
+	version="2.5">
+
+
+
+	<!-- Listener usado na inicializacao da aplicacao para configurar entidades 
+		do Objectify. -->
+	<listener>
+	<listener-class>com.cloudstore88.config.ConfigStartup</listener-class>
+	</listener>
+
+	<!-- Setup do Objectify -->
+	<filter>
+		<filter-name>ObjectifyFilter</filter-name>
+		<filter-class>com.googlecode.objectify.ObjectifyFilter</filter-class>
+	</filter>
+	<filter-mapping>
+		<filter-name>ObjectifyFilter</filter-name>
+		<url-pattern>/*</url-pattern>
+	</filter-mapping>
+
+
+
+	<!-- Servlets -->
+
+ <servlet>
+        <servlet-name>spring</servlet-name>
+        <servlet-class>
+            org.springframework.web.servlet.DispatcherServlet
+        </servlet-class>
+        <load-on-startup>1</load-on-startup>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>spring</servlet-name>
+        <url-pattern>*.html</url-pattern>
+    </servlet-mapping>
+
+    <!-- Filtros -->
+    <filter>
+  		<filter-name>RequestLoggingFilter</filter-name> 
+  		<filter-class>com.cloudstore88.filter.RequestLoggingFilter</filter-class> 
+	</filter>
+	
+    <filter-mapping>
+  		<filter-name>RequestLoggingFilter</filter-name> 
+  		<url-pattern>/Admin/listaUsuarios.html</url-pattern> 
+		<url-pattern>/Admin/usuarioPage.html</url-pattern>
+		<url-pattern>/Admin/produtoPage.html</url-pattern>
+		<url-pattern>/Admin/listaProdutos.html</url-pattern> 
+		
+		<url-pattern>/User/listaCheckOut.html</url-pattern>
+		<url-pattern>/User/checkOutPage.html</url-pattern> 
+		<url-pattern>/User/compraEncerrada.html</url-pattern>
+		<url-pattern>/User/fecharCheckOut.html</url-pattern>
+		<url-pattern>/User/perfil.html</url-pattern>
+	</filter-mapping>
+ 
+	<welcome-file-list>
+		<welcome-file>index.jsp</welcome-file>
+	</welcome-file-list>
+</web-app>

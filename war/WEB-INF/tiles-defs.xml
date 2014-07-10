@@ -1,0 +1,109 @@
+<?xml version="1.0" encoding="ISO-8859-1" ?>
+<!DOCTYPE tiles-definitions PUBLIC
+       "-//Apache Software Foundation//DTD Tiles Configuration 2.0//EN"
+       "http://tiles.apache.org/dtds/tiles-config_2_0.dtd">
+
+<tiles-definitions>
+
+	<definition name="base.definition" template="/WEB-INF/tiles/template.jsp">
+		<put-attribute name="title" value="" />
+		<put-attribute name="header" value="/WEB-INF/tilesjsp/header.jsp" />
+		<put-attribute name="menu" value="/WEB-INF/tiles/menu.jsp" />
+		<put-attribute name="body" value="" />
+		<put-attribute name="footer" value="/WEB-INF/tiles/footer.jsp" />
+	</definition>
+
+	<!-- Teste de Telas -->
+	<definition name="contact" extends="base.definition">
+		<put-attribute name="title" value="Contact Manager" />
+		<put-attribute name="body" value="/WEB-INF/jsp/contact.jsp" />
+	</definition>
+
+	<definition name="hello" extends="base.definition">
+		<put-attribute name="title" value="Contact Manager" />
+		<put-attribute name="body" value="/WEB-INF/jsp/hello.jsp" />
+	</definition>
+	<!-- Fim Teste de Telas -->
+
+
+	<!-- Paginas do Admin -->
+	
+	<definition name="admin/login" extends="base.definition">
+	    
+		<put-attribute name="menu" value="" />
+		<put-attribute name="title" value="Login" />
+		<put-attribute name="body" value="/WEB-INF/jsp/admin/login.jsp" />
+	</definition>
+	
+	<definition name="admin/usuarioPage" extends="base.definition">
+		<put-attribute name="menu" value="/WEB-INF/tiles/menuAdmin.jsp" />
+		<put-attribute name="title" value="Novo Usuário" />
+		<put-attribute name="body" value="/WEB-INF/jsp/admin/usuarioPage.jsp" />
+	</definition>
+
+	<definition name="admin/listaUsuarios" extends="base.definition">
+		<put-attribute name="menu" value="/WEB-INF/tiles/menuAdmin.jsp" />
+		<put-attribute name="title" value="Lista Usuarios" />
+		<put-attribute name="body"
+			value="/WEB-INF/jsp/admin/listaUsuarios.jsp" />
+	</definition>
+
+	<definition name="admin/listaProdutos" extends="base.definition">
+		<put-attribute name="menu" value="/WEB-INF/tiles/menuAdmin.jsp" />
+		<put-attribute name="title" value="Lista Produtos" />
+		<put-attribute name="body"
+			value="/WEB-INF/jsp/admin/listaProdutos.jsp" />
+	</definition>
+
+
+	<definition name="admin/produtoPage" extends="base.definition">
+		<put-attribute name="menu" value="/WEB-INF/tiles/menuAdmin.jsp" />
+		<put-attribute name="title" value="Novo Produto" />
+		<put-attribute name="body" value="/WEB-INF/jsp/admin/produtoPage.jsp" />
+	</definition>
+
+	<!-- FIM Paginas do Admin -->
+
+	<!-- Paginas do Usuário -->
+
+
+	<definition name="user/login"  extends="base.definition"> 
+		<put-attribute name="title" value="Login" />
+		<put-attribute name="body" value="/WEB-INF/jsp/user/login.jsp" />
+	</definition>
+
+	<definition name="user/listaCarrinho" extends="base.definition">
+		<put-attribute name="title" value="Lista Carrinho" />
+		<put-attribute name="body"
+			value="/WEB-INF/jsp/user/listaCarrinho.jsp" />
+	</definition>
+	
+	<definition name="user/listaCheckOut" extends="base.definition">
+		<put-attribute name="title" value="CheckOut" />
+		<put-attribute name="body"
+			value="/WEB-INF/jsp/user/checkOut.jsp" />
+	</definition>
+	
+	<definition name="user/compraEncerrada" extends="base.definition">
+		<put-attribute name="title" value="CheckOut" />
+		<put-attribute name="body"
+			value="/WEB-INF/jsp/user/compraEncerrada.jsp" />
+	</definition>
+
+	<definition name="user/usuarioPage" extends="base.definition">
+		<put-attribute name="title" value="Usuário" />
+		<put-attribute name="body" value="/WEB-INF/jsp/user/usuarioPage.jsp" />
+	</definition>
+	 
+	<definition name="user/listaProdutos" extends="base.definition">
+		<put-attribute name="title" value="Lista Produtos" />
+		<put-attribute name="body"
+			value="/WEB-INF/jsp/user/listaProdutos.jsp" />
+	</definition>
+
+ 
+
+	<!-- Fim Paginas do Usuário -->
+
+
+</tiles-definitions>
