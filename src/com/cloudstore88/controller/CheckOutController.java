@@ -4,6 +4,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpSession;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -171,10 +172,14 @@ public class CheckOutController {
 	 * Finalizar compra, limpa produtos do carrinho.
 	 */
 	@RequestMapping(value = "/User/fecharCheckOut", method = RequestMethod.GET)
-	public String fecharCheckOut(Model model) {
+	public String fecharCheckOut(Model model, HttpServletRequest request ) {
 
 		carrinhoCheckOut.clear();
 		CarrinhoController.carrinho.clear();
+
+		//Adiciona a session o número de produtos no carrinho.
+		HttpSession session = request.getSession();
+		session.setAttribute("carrinhoSize", 0);
 
 		return "user/compraEncerrada";
 	}
