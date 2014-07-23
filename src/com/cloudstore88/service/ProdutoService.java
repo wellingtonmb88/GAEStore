@@ -1,35 +1,39 @@
 package com.cloudstore88.service;
 
-import static com.googlecode.objectify.ObjectifyService.ofy;
-
 import java.util.List;
 
 import com.cloudstore88.model.Produto;
-import com.googlecode.objectify.Key;
 
 public class ProdutoService implements IProduto {
- 
+
+	private ProdutoDAO produtoDAO;
+
+	public ProdutoService() {
+		produtoDAO = new ProdutoDAO();
+	}
 
 	@Override
 	public void salvarProduto(Produto produto) {
-		ofy().save().entities(produto).now();
+		produtoDAO.salvarProduto(produto);
 	}
-
+ 
 	@Override
 	public List<Produto> listarProdutos() {
- 
-		return ofy().load().type(Produto.class).list();
+
+		List<Produto> produtos = produtoDAO.listarProdutos();
+
+		return produtos;
 	}
 
 	@Override
-	public Produto buscaProdutoPorId(Long id) { 
-		Key<Produto> k = Key.create(Produto.class, id);
-		return ofy().load().key(k).get();
+	public Produto buscaProdutoPorId(Long id) {
+		Produto produto = produtoDAO.buscaProdutoPorId(id);
+		return produto;
 	}
 
 	@Override
 	public void deleteProduto(Produto produto) {
-		ofy().delete().entity(produto).now();		
+		produtoDAO.deleteProduto(produto);
 	}
 
 }

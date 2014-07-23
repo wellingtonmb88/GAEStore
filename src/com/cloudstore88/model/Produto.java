@@ -10,22 +10,24 @@ import javax.validation.constraints.Size;
 import org.springframework.format.annotation.NumberFormat;
 import org.springframework.format.annotation.NumberFormat.Style;
 
+import com.googlecode.objectify.annotation.Cache;
 import com.googlecode.objectify.annotation.Entity;
 import com.googlecode.objectify.annotation.Id;
 
 @SuppressWarnings("serial")
 @Entity
+@Cache
 public class Produto implements Serializable {
 
 	@Id
 	private Long id;
 
 	@NotNull(message = "O Nome não pode ser nulo!")
-	@Size(min = 5, message = "O Nome deve conter no mínimo 5 caracteres!")
+	@Size(min = 5, max = 30, message = "O Nome deve conter no mínimo 5 e máximo 30 caracteres!") 
 	private String nome;
 
 	@NotNull(message = "A Descrição não pode ser nula!")
-	@Size(min = 5, message = "A Descrição deve conter no mínimo 5 caracteres!")
+	@Size(min = 5,  max = 30, message = "A Descrição deve conter no mínimo 5 e máximo 30 caracteres!") 
 	private String descricao;
 
 	@NotNull(message = "A Quantidade não pode ser nula!")

@@ -3,33 +3,35 @@ package com.cloudstore88.service;
 import java.util.List;
 
 import com.cloudstore88.model.Usuario;
-import com.googlecode.objectify.Key; 
-import static com.googlecode.objectify.ObjectifyService.ofy;
 
 public class UsuarioService implements IUsuario {
- 
+
+	private UsuarioDAO usuarioDAO;
+
+	public UsuarioService() {
+		usuarioDAO = new UsuarioDAO();
+	}
 
 	@Override
 	public void salvarUsuario(Usuario usuario) {
-		ofy().save().entities(usuario).now();
- 
-	}
- 
-	@Override
-	public List<Usuario> listarUsuarios() {
- 
-		return ofy().load().type(Usuario.class).list();
+		usuarioDAO.salvarUsuario(usuario);
 	}
 
 	@Override
-	public Usuario buscaUsuarioPorId(Long id) { 
-		Key<Usuario> k = Key.create(Usuario.class, id);
-		return ofy().load().key(k).get();
+	public List<Usuario> listarUsuarios() {
+
+		return usuarioDAO.listarUsuarios();
+	}
+
+	@Override
+	public Usuario buscaUsuarioPorId(Long id) {
+
+		return usuarioDAO.buscaUsuarioPorId(id);
 	}
 
 	@Override
 	public void deleteUsuario(Usuario usuario) {
-		ofy().delete().entity(usuario).now();		
+		usuarioDAO.deleteUsuario(usuario);
 	}
 
 }
